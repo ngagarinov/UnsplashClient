@@ -20,8 +20,8 @@ DerivedData
 *.gcno
 *.xcscmblueprint
 *.xcodeproject/xcuserdata
-
-Youtube\ with\ CleanSwift/Application/Constants.swift
+#Hide access keys
+UnsplashClient/Application/SecretConstants.swift
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
