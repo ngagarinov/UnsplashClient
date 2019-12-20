@@ -27,12 +27,11 @@ final class NetworkService: Networking {
     func request(path: String, params: [String : String], completion: @escaping (Data?, Error?) -> Void) {
         var allParams = params
         allParams[Constants.clientIdParam] = SecretConstants.accessKey
-        let url = self.url(from: path, params: allParams)
-        let request = URLRequest(url: url)
-        let task = createDataTask(from: request, completion: completion)
-        task.resume()
-        
-        print(url)
+        if let url = self.url(from: path, params: allParams) {
+            let request = URLRequest(url: url)
+            let task = createDataTask(from: request, completion: completion)
+            task.resume()
+        }
     }
     
      private func createDataTask(from request: URLRequest, completion: @escaping (Data?, Error?) -> Void ) -> URLSessionDataTask {
@@ -46,7 +45,7 @@ final class NetworkService: Networking {
     
     // MARK: - Private Helpers
     
-    private func url(from path: String, params: [String: String]) -> URL {
+    private func url(from path: String, params: [String: String]) -> URL? {
         
         var components = URLComponents()
         
@@ -55,7 +54,7 @@ final class NetworkService: Networking {
         components.path = path
         components.queryItems = params.map { URLQueryItem(name: $0, value: $1)}
 
-        return components.url!
+        return components.url
     }
     
     

@@ -8,7 +8,23 @@
 
 import Foundation
 
-struct Collections: Codable {
+struct Collections: Decodable {
     let id: Int
     let title: String
+    let previewPhotos: [PhotosCollection]
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case previewPhotos = "preview_photos"
+    }
+}
+
+struct PhotosCollection: Decodable {
+    let id: String
+    let urls: RegularPhoto
+}
+
+struct RegularPhoto: Codable {
+    let regular: String
 }

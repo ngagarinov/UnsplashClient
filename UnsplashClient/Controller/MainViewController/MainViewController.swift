@@ -15,12 +15,14 @@ final class MainViewController: UIViewController {
     
     private enum Constants {
         static let cellIdentificator = "MainTableViewCell"
+        static let searchBarFrame = CGRect(x: 0, y: 0, width: 200, height: 20)//
     }
     
     // MARK: - Propeties
     
     @IBOutlet weak var tableView: UITableView!
     
+//    lazy var searchBar: UISearchBar = UISearchBar(frame: Constants.searchBarFrame)
     private var dataFetcher = NetworkDataFetcher()
     private var collections = [Collections]()
     private var page = 1
@@ -29,6 +31,16 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let searchController = UISearchController(searchResultsController: nil)
+//       searchController.searchResultsUpdater = self.viewModel
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "Search artists"
+//        self.navigationItem.searchController = searchController
+//        self.definesPresentationContext = true
+        
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: MainTableViewCell.cellId)
@@ -50,9 +62,9 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath)
 
-        if let photoCell = cell as? MainTableViewCell {
+        if let collectionCell = cell as? MainTableViewCell {
             let collection = collections[indexPath.row]
-            photoCell.configure(with: collection)
+            collectionCell.configure(with: collection)
         }
 
         return cell
@@ -74,6 +86,14 @@ extension MainViewController: UITableViewDelegate {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let collectionViewController: CollectionViewController = CollectionViewController.loadFromStoryboard()
+        collectionViewController.photosCollection = collections[indexPath.row].previewPhotos
+//        collectionViewController.configure(with: collections[indexPath.row].previewPhotos)
+        
+        self.navigationController?.pushViewController(collectionViewController, animated: true)
     }
 }
 
