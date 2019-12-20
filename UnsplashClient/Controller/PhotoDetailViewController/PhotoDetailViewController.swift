@@ -18,11 +18,14 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var urlLabel: UILabel!
     
     private var dataFetcher = NetworkDataFetcher()
+    
     // MARK: - ViewController Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    // MARK: - Internal Properties
     
     func configure(with id: String) {
         

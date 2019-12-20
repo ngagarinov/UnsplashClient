@@ -15,14 +15,12 @@ final class MainViewController: UIViewController {
     
     private enum Constants {
         static let cellIdentificator = "MainTableViewCell"
-        static let searchBarFrame = CGRect(x: 0, y: 0, width: 200, height: 20)//
     }
     
     // MARK: - Propeties
     
     @IBOutlet weak var tableView: UITableView!
     
-//    lazy var searchBar: UISearchBar = UISearchBar(frame: Constants.searchBarFrame)
     private var dataFetcher = NetworkDataFetcher()
     private var collections = [Collections]()
     private var page = 1
@@ -32,22 +30,23 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let searchController = UISearchController(searchResultsController: nil)
-//       searchController.searchResultsUpdater = self.viewModel
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search artists"
-//        self.navigationItem.searchController = searchController
-//        self.definesPresentationContext = true
-        
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: MainTableViewCell.cellId)
+        
         dataFetcher.getCollections { collections in
             self.collections = collections ?? []
             self.tableView.reloadData()
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: #selector(goToSearch))
+        
+    }
+    
+    // MARK: - Private Helpers
+    
+    @objc func goToSearch() {
+        let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
+        navigationController?.pushViewController(searchVC, animated: true)
     }
 
 }
