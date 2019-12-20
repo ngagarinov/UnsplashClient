@@ -17,6 +17,7 @@ struct NetworkDataFetcher {
         static let perPageParameter = ["per_page" : "20"]
         static let page = "page"
         static let collections = "/collections"
+        static let photos = "/photos/"
     }
     
     // MARK: - Properties
@@ -24,8 +25,11 @@ struct NetworkDataFetcher {
     
     // MARK: - Internal helpers
     
-    func getCollections(response: @escaping ([Collections]?) -> Void) {
-        let params = Constants.perPageParameter
+    func getCollections(withNext page: Int? = nil, response: @escaping ([Collections]?) -> Void) {
+        var params = Constants.perPageParameter
+        if let page = page {
+            params = [Constants.page : "\(page)"]
+        }
         networking.request(path: Constants.collections, params: params) { (data, error) in
             if let error = error {
                 print("error received requesting data: \(error.localizedDescription)")
@@ -36,15 +40,14 @@ struct NetworkDataFetcher {
         }
     }
     
-    func getNextCollection(page: Int, response: @escaping ([Collections]?) -> Void) {
-        var params = Constants.perPageParameter
-        params = [Constants.page : "\(page)"]
-        networking.request(path: Constants.collections, params: params) { (data, error) in
+    func getPhotoDetail(id: String, response: @escaping (PhotoDetail?) -> Void) {
+        networking.request(path: Constants.photos + id, params: [
+            :]) { (data, error) in
             if let error = error {
                 print("error received requesting data: \(error.localizedDescription)")
                 response(nil)
             }
-            let decoded = self.decodeJson(type: [Collections].self, fromData: data)
+            let decoded = self.decodeJson(type: PhotoDetail.self, fromData: data)
             response(decoded)
         }
     }

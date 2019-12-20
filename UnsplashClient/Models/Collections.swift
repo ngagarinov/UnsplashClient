@@ -25,6 +25,13 @@ struct PhotosCollection: Decodable {
     let urls: RegularPhoto
 }
 
-struct RegularPhoto: Codable {
+struct RegularPhoto: Decodable {
     let regular: String
+}
+
+struct PhotoDetail: Decodable {
+    let width: Int
+    let height: Int
+    let description: String?
+    let urls: RegularPhoto
 }

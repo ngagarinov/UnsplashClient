@@ -62,5 +62,10 @@ extension CollectionViewController: UITableViewDataSource {
 
 extension CollectionViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let photoDetailVC: PhotoDetailViewController = PhotoDetailViewController.loadFromStoryboard()
+        photoDetailVC.configure(with: photosCollection[indexPath.row].id)
+        self.navigationController?.pushViewController(photoDetailVC, animated: true)
+    }
     
 }

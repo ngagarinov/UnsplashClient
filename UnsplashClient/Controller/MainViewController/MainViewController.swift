@@ -81,7 +81,7 @@ extension MainViewController: UITableViewDelegate {
         if indexPath.row == collections.count - 1 {
             page += 1
             
-            dataFetcher.getNextCollection(page: page) { collection in
+            dataFetcher.getCollections(withNext: page) { collection in
                 self.collections.append(contentsOf: collection ?? [])
                 self.tableView.reloadData()
             }

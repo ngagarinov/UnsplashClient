@@ -34,6 +34,5 @@ class CollectionTableViewCell: UITableViewCell {
     
     func configure(with model: PhotosCollection) {
         photoImageView.loadImage(with: model.urls.regular)
-        print(model.urls.regular)
     }
 }

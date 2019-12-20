@@ -24,6 +24,8 @@
 		5F7F2ADE23ACB8E800073BA1 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2ADC23ACB8E800073BA1 /* CollectionTableViewCell.swift */; };
 		5F7F2ADF23ACB8E800073BA1 /* CollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7F2ADD23ACB8E800073BA1 /* CollectionTableViewCell.xib */; };
 		5F7F2AE123ACBB0E00073BA1 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2AE023ACBB0E00073BA1 /* UIImageView.swift */; };
+		5F7F2AE423ACDAC800073BA1 /* PhotoDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7F2AE323ACDAC800073BA1 /* PhotoDetailViewController.storyboard */; };
+		5F7F2AE623ACDAD400073BA1 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2AE523ACDAD400073BA1 /* PhotoDetailViewController.swift */; };
 		D5BC00308388AA71AAB6CF4B /* Pods_UnsplashClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19D748A5AAECFB12BCC5879 /* Pods_UnsplashClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		5F7F2ADC23ACB8E800073BA1 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		5F7F2ADD23ACB8E800073BA1 /* CollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionTableViewCell.xib; sourceTree = "<group>"; };
 		5F7F2AE023ACBB0E00073BA1 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		5F7F2AE323ACDAC800073BA1 /* PhotoDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoDetailViewController.storyboard; sourceTree = "<group>"; };
+		5F7F2AE523ACDAD400073BA1 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		7AB400C3F131B4F65E7432BD /* Pods-UnsplashClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsplashClient.release.xcconfig"; path = "Target Support Files/Pods-UnsplashClient/Pods-UnsplashClient.release.xcconfig"; sourceTree = "<group>"; };
 		D19D748A5AAECFB12BCC5879 /* Pods_UnsplashClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsplashClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -164,6 +168,7 @@
 			children = (
 				5F7F2AC423AB85E400073BA1 /* MainViewController */,
 				5F7F2AD623ACB44500073BA1 /* CollectionViewController */,
+				5F7F2AE223ACDA3C00073BA1 /* PhotoDetailViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +190,15 @@
 				5F7F2ADD23ACB8E800073BA1 /* CollectionTableViewCell.xib */,
 			);
 			path = CollectionTableViewCell;
+			sourceTree = "<group>";
+		};
+		5F7F2AE223ACDA3C00073BA1 /* PhotoDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5F7F2AE523ACDAD400073BA1 /* PhotoDetailViewController.swift */,
+				5F7F2AE323ACDAC800073BA1 /* PhotoDetailViewController.storyboard */,
+			);
+			path = PhotoDetailViewController;
 			sourceTree = "<group>";
 		};
 		B1F1D8D4DCA754C77B5F5FA3 /* Pods */ = {
@@ -269,6 +283,7 @@
 				5F7F2AD223AB9AE200073BA1 /* MainViewController.storyboard in Resources */,
 				5F7F2AB923AA46C800073BA1 /* LaunchScreen.storyboard in Resources */,
 				5F7F2AAC23AA43E700073BA1 /* Assets.xcassets in Resources */,
+				5F7F2AE423ACDAC800073BA1 /* PhotoDetailViewController.storyboard in Resources */,
 				5F7F2ABF23AB72C100073BA1 /* MainTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +343,7 @@
 				5F7F2AA723AA43E300073BA1 /* MainViewController.swift in Sources */,
 				5F7F2ABE23AB72C100073BA1 /* MainTableViewCell.swift in Sources */,
 				5F7F2ADE23ACB8E800073BA1 /* CollectionTableViewCell.swift in Sources */,
+				5F7F2AE623ACDAD400073BA1 /* PhotoDetailViewController.swift in Sources */,
 				5F7F2AE123ACBB0E00073BA1 /* UIImageView.swift in Sources */,
 				5F7F2AC723AB899700073BA1 /* NetworkService.swift in Sources */,
 				5F7F2AA323AA43E300073BA1 /* AppDelegate.swift in Sources */,
