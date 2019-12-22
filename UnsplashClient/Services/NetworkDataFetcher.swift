@@ -14,7 +14,7 @@ struct NetworkDataFetcher {
     // MARK: - Constants
     
     private enum Constants {
-        static let perPageParameter = ["per_page" : "20"]
+        static let perPageParameter = ["per_page" : "10"]
         static let page = "page"
         static let collections = "/collections"
         static let photos = "/photos/"
@@ -36,6 +36,22 @@ struct NetworkDataFetcher {
                 response(nil)
             }
             let decoded = self.decodeJson(type: [Collections].self, fromData: data)
+            response(decoded)
+        }
+    }
+    
+    func getCollectionPhotos(withNext page: Int? = nil, collectonId: String, response: @escaping ([PhotoDetail]?) -> Void) {
+        var params = Constants.perPageParameter
+        if let page = page {
+            params = [Constants.page : "\(page)"]
+        }
+        let path = Constants.collections + "/\(collectonId)" + Constants.photos
+        networking.request(path: path, params: params) { (data, error) in
+            if let error = error {
+                print("error received requesting data: \(error.localizedDescription)")
+                response(nil)
+            }
+            let decoded = self.decodeJson(type: [PhotoDetail].self, fromData: data)
             response(decoded)
         }
     }

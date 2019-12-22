@@ -11,11 +11,13 @@ import Foundation
 struct Collections: Decodable {
     let id: Int
     let title: String
+    let description: String?
+    let coverPhoto: PhotosCollection
     let previewPhotos: [PhotosCollection]
     
     private enum CodingKeys: String, CodingKey {
-        case id
-        case title
+        case id, title, description
+        case coverPhoto = "cover_photo"
         case previewPhotos = "preview_photos"
     }
 }
@@ -27,6 +29,7 @@ struct PhotosCollection: Decodable {
 
 struct RegularPhoto: Decodable {
     let regular: String
+    let full: String
 }
 
 struct PhotoDetail: Decodable {

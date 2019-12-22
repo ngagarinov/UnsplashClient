@@ -43,16 +43,18 @@
                                     <constraint firstItem="Rus-yr-0cv" firstAttribute="leading" secondItem="pWD-WQ-uJD" secondAttribute="leading" constant="16" id="q6M-hA-ATL"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZZG-zq-Cqk">
-                                <rect key="frame" x="16" y="206" width="382" height="229"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZZG-zq-Cqk">
+                                <rect key="frame" x="16" y="144" width="382" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="DT1-04-n1B"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="pWD-WQ-uJD" firstAttribute="trailing" secondItem="qYk-au-GVt" secondAttribute="trailing" id="9kf-ur-BGQ"/>
-                            <constraint firstItem="ZZG-zq-Cqk" firstAttribute="top" secondItem="qYk-au-GVt" secondAttribute="top" constant="162" id="DYz-Ad-XZd"/>
+                            <constraint firstItem="ZZG-zq-Cqk" firstAttribute="top" secondItem="qYk-au-GVt" secondAttribute="top" constant="100" id="DYz-Ad-XZd"/>
                             <constraint firstItem="qYk-au-GVt" firstAttribute="trailing" secondItem="ZZG-zq-Cqk" secondAttribute="trailing" constant="16" id="HS9-8M-jka"/>
-                            <constraint firstItem="pWD-WQ-uJD" firstAttribute="top" secondItem="ZZG-zq-Cqk" secondAttribute="bottom" constant="316" id="IW2-4j-QIy"/>
                             <constraint firstItem="pWD-WQ-uJD" firstAttribute="leading" secondItem="qYk-au-GVt" secondAttribute="leading" id="n7X-gZ-7ZG"/>
                             <constraint firstAttribute="bottom" secondItem="pWD-WQ-uJD" secondAttribute="bottom" id="p18-7y-qFX"/>
                             <constraint firstItem="ZZG-zq-Cqk" firstAttribute="leading" secondItem="qYk-au-GVt" secondAttribute="leading" constant="16" id="z5c-BE-iGn"/>

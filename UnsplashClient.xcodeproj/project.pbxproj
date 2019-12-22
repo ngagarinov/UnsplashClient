@@ -28,6 +28,10 @@
 		5F7F2AE623ACDAD400073BA1 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2AE523ACDAD400073BA1 /* PhotoDetailViewController.swift */; };
 		5F7F2AEA23AD03B100073BA1 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7F2AE923AD03B100073BA1 /* SearchViewController.storyboard */; };
 		5F7F2AEC23AD03C600073BA1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2AEB23AD03C600073BA1 /* SearchViewController.swift */; };
+		5F9CD33623AE29BC008CAFEF /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CD33523AE29BC008CAFEF /* ShadowView.swift */; };
+		5F9CD33823AE29CF008CAFEF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CD33723AE29CF008CAFEF /* UIView.swift */; };
+		5F9CD33E23AE55AB008CAFEF /* PhotoDetialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CD33C23AE55AA008CAFEF /* PhotoDetialTableViewCell.swift */; };
+		5F9CD33F23AE55AB008CAFEF /* PhotoDetialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9CD33D23AE55AA008CAFEF /* PhotoDetialTableViewCell.xib */; };
 		D5BC00308388AA71AAB6CF4B /* Pods_UnsplashClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19D748A5AAECFB12BCC5879 /* Pods_UnsplashClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,10 @@
 		5F7F2AE523ACDAD400073BA1 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		5F7F2AE923AD03B100073BA1 /* SearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
 		5F7F2AEB23AD03C600073BA1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		5F9CD33523AE29BC008CAFEF /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		5F9CD33723AE29CF008CAFEF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		5F9CD33C23AE55AA008CAFEF /* PhotoDetialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetialTableViewCell.swift; sourceTree = "<group>"; };
+		5F9CD33D23AE55AA008CAFEF /* PhotoDetialTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoDetialTableViewCell.xib; sourceTree = "<group>"; };
 		7AB400C3F131B4F65E7432BD /* Pods-UnsplashClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsplashClient.release.xcconfig"; path = "Target Support Files/Pods-UnsplashClient/Pods-UnsplashClient.release.xcconfig"; sourceTree = "<group>"; };
 		D19D748A5AAECFB12BCC5879 /* Pods_UnsplashClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsplashClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,6 +104,7 @@
 				5F7F2AD523ACB41900073BA1 /* Controller */,
 				5F7F2AC323AB85B700073BA1 /* Services */,
 				5F7F2ACC23AB90B800073BA1 /* Models */,
+				5F9CD33423AE29A1008CAFEF /* Helpers */,
 				5F7F2ACF23AB99C800073BA1 /* Extensions */,
 				5F7F2AB623AA441700073BA1 /* Application */,
 				5F7F2AB723AA44A400073BA1 /* Resources */,
@@ -162,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				5F7F2AD023AB99F700073BA1 /* UIViewController.swift */,
+				5F9CD33723AE29CF008CAFEF /* UIView.swift */,
 				5F7F2AE023ACBB0E00073BA1 /* UIImageView.swift */,
 			);
 			path = Extensions;
@@ -202,6 +212,7 @@
 			children = (
 				5F7F2AE523ACDAD400073BA1 /* PhotoDetailViewController.swift */,
 				5F7F2AE323ACDAC800073BA1 /* PhotoDetailViewController.storyboard */,
+				5F9CD33B23AE557C008CAFEF /* PhotoDetailTableViewCell */,
 			);
 			path = PhotoDetailViewController;
 			sourceTree = "<group>";
@@ -213,6 +224,23 @@
 				5F7F2AE923AD03B100073BA1 /* SearchViewController.storyboard */,
 			);
 			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		5F9CD33423AE29A1008CAFEF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5F9CD33523AE29BC008CAFEF /* ShadowView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5F9CD33B23AE557C008CAFEF /* PhotoDetailTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5F9CD33C23AE55AA008CAFEF /* PhotoDetialTableViewCell.swift */,
+				5F9CD33D23AE55AA008CAFEF /* PhotoDetialTableViewCell.xib */,
+			);
+			path = PhotoDetailTableViewCell;
 			sourceTree = "<group>";
 		};
 		B1F1D8D4DCA754C77B5F5FA3 /* Pods */ = {
@@ -295,6 +323,7 @@
 				5F7F2AD823ACB48A00073BA1 /* CollectionViewController.storyboard in Resources */,
 				5F7F2ADF23ACB8E800073BA1 /* CollectionTableViewCell.xib in Resources */,
 				5F7F2AD223AB9AE200073BA1 /* MainViewController.storyboard in Resources */,
+				5F9CD33F23AE55AB008CAFEF /* PhotoDetialTableViewCell.xib in Resources */,
 				5F7F2AEA23AD03B100073BA1 /* SearchViewController.storyboard in Resources */,
 				5F7F2AB923AA46C800073BA1 /* LaunchScreen.storyboard in Resources */,
 				5F7F2AAC23AA43E700073BA1 /* Assets.xcassets in Resources */,
@@ -358,9 +387,12 @@
 				5F7F2AA723AA43E300073BA1 /* MainViewController.swift in Sources */,
 				5F7F2ABE23AB72C100073BA1 /* MainTableViewCell.swift in Sources */,
 				5F7F2ADE23ACB8E800073BA1 /* CollectionTableViewCell.swift in Sources */,
+				5F9CD33E23AE55AB008CAFEF /* PhotoDetialTableViewCell.swift in Sources */,
+				5F9CD33623AE29BC008CAFEF /* ShadowView.swift in Sources */,
 				5F7F2AE623ACDAD400073BA1 /* PhotoDetailViewController.swift in Sources */,
 				5F7F2AE123ACBB0E00073BA1 /* UIImageView.swift in Sources */,
 				5F7F2AEC23AD03C600073BA1 /* SearchViewController.swift in Sources */,
+				5F9CD33823AE29CF008CAFEF /* UIView.swift in Sources */,
 				5F7F2AC723AB899700073BA1 /* NetworkService.swift in Sources */,
 				5F7F2AA323AA43E300073BA1 /* AppDelegate.swift in Sources */,
 				5F7F2ACE23AB90DD00073BA1 /* Collections.swift in Sources */,

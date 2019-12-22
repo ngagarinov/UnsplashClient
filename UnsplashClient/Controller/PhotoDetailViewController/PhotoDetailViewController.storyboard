@@ -16,49 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="XtU-YJ-G7k">
-                                <rect key="frame" x="16" y="44" width="382" height="124"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbL-Qd-IiB">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LD9-Q2-HEf">
-                                        <rect key="frame" x="0.0" y="34.5" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wiz-hr-snw">
-                                        <rect key="frame" x="0.0" y="69" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhK-wa-KRR">
-                                        <rect key="frame" x="0.0" y="103.5" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2yL-Ts-Yty">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="XtU-YJ-G7k" firstAttribute="top" secondItem="tml-12-hSl" secondAttribute="top" id="QDF-4D-n2X"/>
-                            <constraint firstItem="XtU-YJ-G7k" firstAttribute="leading" secondItem="tml-12-hSl" secondAttribute="leading" constant="16" id="Qya-NQ-Xae"/>
-                            <constraint firstItem="tml-12-hSl" firstAttribute="trailing" secondItem="XtU-YJ-G7k" secondAttribute="trailing" constant="16" id="faj-QN-GbD"/>
+                            <constraint firstItem="tml-12-hSl" firstAttribute="bottom" secondItem="2yL-Ts-Yty" secondAttribute="bottom" id="0V5-4K-Erg"/>
+                            <constraint firstItem="2yL-Ts-Yty" firstAttribute="top" secondItem="tml-12-hSl" secondAttribute="top" id="Ab9-em-0DX"/>
+                            <constraint firstItem="2yL-Ts-Yty" firstAttribute="leading" secondItem="tml-12-hSl" secondAttribute="leading" id="JUK-bO-Fd9"/>
+                            <constraint firstItem="tml-12-hSl" firstAttribute="trailing" secondItem="2yL-Ts-Yty" secondAttribute="trailing" id="NRH-hf-6h4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tml-12-hSl"/>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="Wiz-hr-snw" id="LUS-Lo-joK"/>
-                        <outlet property="heightLabel" destination="LD9-Q2-HEf" id="rWC-4C-HPO"/>
-                        <outlet property="urlLabel" destination="fhK-wa-KRR" id="asH-8G-jdF"/>
-                        <outlet property="widthLabel" destination="DbL-Qd-IiB" id="Qgd-Y2-NJy"/>
+                        <outlet property="tableView" destination="2yL-Ts-Yty" id="c5J-g4-dNq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHv-30-FIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

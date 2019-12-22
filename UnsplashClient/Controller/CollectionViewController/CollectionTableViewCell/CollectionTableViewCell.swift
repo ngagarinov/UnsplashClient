@@ -21,7 +21,9 @@ class CollectionTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        photoImageView.layer.cornerRadius = 16
+        photoImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,7 +34,7 @@ class CollectionTableViewCell: UITableViewCell {
     
     // MARK: - Internal Helpers
     
-    func configure(with model: PhotosCollection) {
+    func configure(with model: PhotoDetail) {
         photoImageView.loadImage(with: model.urls.regular)
     }
 }

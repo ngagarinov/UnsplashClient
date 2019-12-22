@@ -15,6 +15,7 @@ final class MainViewController: UIViewController {
     
     private enum Constants {
         static let cellIdentificator = "MainTableViewCell"
+        static let estimatedHeight: CGFloat = 267
     }
     
     // MARK: - Propeties
@@ -29,6 +30,8 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setTableViewAppearance()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,6 +54,18 @@ final class MainViewController: UIViewController {
 
 }
 
+// MARK: - Private MainViewController Extension
+
+private extension MainViewController {
+    
+    func setTableViewAppearance() {
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = Constants.estimatedHeight
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+}
+
 // MARK: - TableViewDataSource Methods
 
 extension MainViewController: UITableViewDataSource {
@@ -68,7 +83,6 @@ extension MainViewController: UITableViewDataSource {
 
         return cell
     }
-    
 }
 
 // MARK: - TableViewDelegate Methods
@@ -88,25 +102,11 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let collectionViewController: CollectionViewController = CollectionViewController.loadFromStoryboard()
-        collectionViewController.photosCollection = collections[indexPath.row].previewPhotos
-//        collectionViewController.configure(with: collections[indexPath.row].previewPhotos)
+        collectionViewController.makeRequest(with: collections[indexPath.row].id)
         
         self.navigationController?.pushViewController(collectionViewController, animated: true)
     }
 }
 
-////MARK: - UnsplashPhotoPickerDelegate
-//extension MainViewController: UnsplashPhotoPickerDelegate {
-//    func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
-//        print("Unsplash photo picker did select \(photos.count) photo(s)")
-//
-//        self.collections = photos
-//
-//        tableView.reloadData()
-//    }
-//
-//    func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
-//        print("Unsplash photo picker did cancel")
-//    }
-//}
