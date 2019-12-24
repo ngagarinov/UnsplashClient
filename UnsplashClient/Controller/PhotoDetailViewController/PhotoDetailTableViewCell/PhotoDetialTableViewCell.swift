@@ -38,9 +38,8 @@ class PhotoDetialTableViewCell: UITableViewCell {
             } else {
                 descriptionLabel.isHidden = true
             }
-            photoImageView.loadImage(with: viewModel.urls.regular)
+            photoImageView.loadImage(with: viewModel.urls.regular, placeholder: UIImage(named: "placeholder"))
             urlTextView.text = viewModel.urls.full
-            
         }
     }
     

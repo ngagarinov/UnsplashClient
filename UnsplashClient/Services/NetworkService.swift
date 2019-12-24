@@ -57,6 +57,4 @@ final class NetworkService: Networking {
         return components.url
     }
     
-    
-    
 }

@@ -29,8 +29,8 @@ class SearchViewController: UIViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         
         let configuration = UnsplashPhotoPickerConfiguration(
-            accessKey: "77b6e0e583382304914b61409589def5766f0f26510379702a3b0ae7db44c8fa",
-            secretKey: "5d5215ced1a7430a91b6a6508286480a86adcd6ed31b8dd4b1870c5dc4763686",
+            accessKey: SecretConstants.accessKey,
+            secretKey: SecretConstants.secretKey,
             query: searchTextField.text
         )
         
@@ -47,8 +47,8 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UnsplashPhotoPickerDelegate {
     func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
 
-        if let photo = photos.first!.urls[.regular] {
-            imageView.loadImage(with: photo, placeholder: nil)
+        if let photo = photos[0].urls[.regular] {
+            imageView.loadImage(with: photo, placeholder: UIImage(named: "placeholder"))
         }
     }
 

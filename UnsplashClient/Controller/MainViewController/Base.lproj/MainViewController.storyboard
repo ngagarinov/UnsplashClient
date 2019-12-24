@@ -17,26 +17,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XpC-FK-BGr">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="5Pd-xr-CDC">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VYx-7l-egT">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo of the day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y21-BC-Jxh">
+                                            <rect key="frame" x="8" y="171" width="126.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Unsplash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buc-jG-8AN">
+                                            <rect key="frame" x="311.5" y="171" width="94.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="VYx-7l-egT" secondAttribute="trailing" id="50k-zt-Hcb"/>
+                                        <constraint firstItem="VYx-7l-egT" firstAttribute="top" secondItem="5Pd-xr-CDC" secondAttribute="top" id="7HV-s1-hSX"/>
+                                        <constraint firstAttribute="bottom" secondItem="buc-jG-8AN" secondAttribute="bottom" constant="8" id="EVg-L9-4W9"/>
+                                        <constraint firstAttribute="bottom" secondItem="VYx-7l-egT" secondAttribute="bottom" id="M6C-to-fWN"/>
+                                        <constraint firstItem="buc-jG-8AN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="y21-BC-Jxh" secondAttribute="trailing" constant="177" id="Pdl-yg-GLy"/>
+                                        <constraint firstItem="VYx-7l-egT" firstAttribute="leading" secondItem="5Pd-xr-CDC" secondAttribute="leading" id="RKW-bG-Hre"/>
+                                        <constraint firstAttribute="bottom" secondItem="y21-BC-Jxh" secondAttribute="bottom" constant="8" id="WC3-25-56c"/>
+                                        <constraint firstItem="y21-BC-Jxh" firstAttribute="leading" secondItem="5Pd-xr-CDC" secondAttribute="leading" constant="8" id="sbz-ni-D6S"/>
+                                        <constraint firstAttribute="trailing" secondItem="buc-jG-8AN" secondAttribute="trailing" constant="8" id="tGY-MB-xa5"/>
+                                    </constraints>
+                                </view>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XpC-FK-BGr" secondAttribute="bottom" id="2HO-7c-po9"/>
-                            <constraint firstItem="XpC-FK-BGr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Hzd-C7-B0n"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XpC-FK-BGr" secondAttribute="trailing" id="P0p-EG-tYI"/>
+                            <constraint firstItem="XpC-FK-BGr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Qit-1V-sT0"/>
                             <constraint firstItem="XpC-FK-BGr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kUc-BV-2P0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="PhotoOfTheDayUsernameLabel" destination="buc-jG-8AN" id="xxG-8x-ewg"/>
+                        <outlet property="photoOfTheDay" destination="VYx-7l-egT" id="fVb-Ay-4wD"/>
                         <outlet property="tableView" destination="XpC-FK-BGr" id="5Xp-V8-GQc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="115"/>
+            <point key="canvasLocation" x="140.57971014492756" y="114.50892857142857"/>
         </scene>
     </scenes>
 </document>

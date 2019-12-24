@@ -32,6 +32,7 @@
 		5F9CD33823AE29CF008CAFEF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CD33723AE29CF008CAFEF /* UIView.swift */; };
 		5F9CD33E23AE55AB008CAFEF /* PhotoDetialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CD33C23AE55AA008CAFEF /* PhotoDetialTableViewCell.swift */; };
 		5F9CD33F23AE55AB008CAFEF /* PhotoDetialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9CD33D23AE55AA008CAFEF /* PhotoDetialTableViewCell.xib */; };
+		5F9CD34123B0E8C7008CAFEF /* SYActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CD34023B0E8C7008CAFEF /* SYActivityIndicatorView.swift */; };
 		D5BC00308388AA71AAB6CF4B /* Pods_UnsplashClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19D748A5AAECFB12BCC5879 /* Pods_UnsplashClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		5F9CD33723AE29CF008CAFEF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5F9CD33C23AE55AA008CAFEF /* PhotoDetialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetialTableViewCell.swift; sourceTree = "<group>"; };
 		5F9CD33D23AE55AA008CAFEF /* PhotoDetialTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoDetialTableViewCell.xib; sourceTree = "<group>"; };
+		5F9CD34023B0E8C7008CAFEF /* SYActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SYActivityIndicatorView.swift; sourceTree = "<group>"; };
 		7AB400C3F131B4F65E7432BD /* Pods-UnsplashClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsplashClient.release.xcconfig"; path = "Target Support Files/Pods-UnsplashClient/Pods-UnsplashClient.release.xcconfig"; sourceTree = "<group>"; };
 		D19D748A5AAECFB12BCC5879 /* Pods_UnsplashClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsplashClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				5F9CD33523AE29BC008CAFEF /* ShadowView.swift */,
+				5F9CD34023B0E8C7008CAFEF /* SYActivityIndicatorView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				5F7F2ABE23AB72C100073BA1 /* MainTableViewCell.swift in Sources */,
 				5F7F2ADE23ACB8E800073BA1 /* CollectionTableViewCell.swift in Sources */,
 				5F9CD33E23AE55AB008CAFEF /* PhotoDetialTableViewCell.swift in Sources */,
+				5F9CD34123B0E8C7008CAFEF /* SYActivityIndicatorView.swift in Sources */,
 				5F9CD33623AE29BC008CAFEF /* ShadowView.swift in Sources */,
 				5F7F2AE623ACDAD400073BA1 /* PhotoDetailViewController.swift in Sources */,
 				5F7F2AE123ACBB0E00073BA1 /* UIImageView.swift in Sources */,

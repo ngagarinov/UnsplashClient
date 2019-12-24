@@ -18,23 +18,32 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SW2-gj-vW4">
-                        <rect key="frame" x="8" y="16" width="359" height="168"/>
+                        <rect key="frame" x="0.0" y="1" width="375" height="198"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="168" id="cuH-Zr-elg"/>
-                            <constraint firstAttribute="width" constant="359" id="nGv-hY-VY3"/>
+                            <constraint firstAttribute="height" constant="198" id="KSU-Ee-qA3"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unsplash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmn-RA-h3W">
+                        <rect key="frame" x="8" y="174" width="65.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="SW2-gj-vW4" secondAttribute="trailing" constant="8" id="EmE-Zu-hsa"/>
-                    <constraint firstAttribute="bottom" secondItem="SW2-gj-vW4" secondAttribute="bottom" constant="16" id="fgD-Rm-Qww"/>
-                    <constraint firstItem="SW2-gj-vW4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="gJy-kj-KVS"/>
-                    <constraint firstItem="SW2-gj-vW4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="mDV-Y8-6tv"/>
+                    <constraint firstAttribute="bottom" secondItem="SW2-gj-vW4" secondAttribute="bottom" constant="1" id="3k6-WG-rFq"/>
+                    <constraint firstAttribute="bottom" secondItem="Rmn-RA-h3W" secondAttribute="bottom" constant="8" id="5cd-xw-OaI"/>
+                    <constraint firstAttribute="trailing" secondItem="SW2-gj-vW4" secondAttribute="trailing" id="AoS-ae-84P"/>
+                    <constraint firstItem="SW2-gj-vW4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="KPK-2E-oGN"/>
+                    <constraint firstItem="SW2-gj-vW4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TfM-tO-xi1"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rmn-RA-h3W" secondAttribute="trailing" constant="200" id="jcc-jY-9kZ"/>
+                    <constraint firstItem="Rmn-RA-h3W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="pmt-6B-fYJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="photoImageView" destination="SW2-gj-vW4" id="rJw-AR-9HC"/>
+                <outlet property="usernameLabel" destination="Rmn-RA-h3W" id="Txi-25-b3d"/>
             </connections>
             <point key="canvasLocation" x="112.31884057971016" y="162.05357142857142"/>
         </tableViewCell>

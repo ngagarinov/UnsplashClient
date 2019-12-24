@@ -21,7 +21,6 @@ class PhotoDetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var dataFetcher = NetworkDataFetcher()
     private var photoDetail: PhotoDetail?
     
     // MARK: - ViewController Lifecycle
@@ -41,13 +40,6 @@ class PhotoDetailViewController: UIViewController {
     func configure(with viewModel: PhotoDetail?) {
         
         photoDetail = viewModel
-//        dataFetcher.getPhotoDetail(id: id) { (model) in
-//            self.photoDetail = model
-//            self.tableView.reloadData()
-//            self.activityIndicator.stopAnimating()
-//            self.activityIndicator.isHidden = true
-//            self.tableView.isHidden = false
-//        }
     }
 }
 

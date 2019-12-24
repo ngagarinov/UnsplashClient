@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UnsplashPhotoPicker
 
 struct NetworkDataFetcher {
     
@@ -18,6 +17,14 @@ struct NetworkDataFetcher {
         static let page = "page"
         static let collections = "/collections"
         static let photos = "/photos/"
+        static let PhotoOfTheDayCollectionId = "/1459961/"
+    }
+    
+    // MARK: - Enum
+    
+    enum Result<ResultDataType> {
+        case data(ResultDataType)
+        case error
     }
     
     // MARK: - Properties
@@ -25,46 +32,54 @@ struct NetworkDataFetcher {
     
     // MARK: - Internal helpers
     
-    func getCollections(withNext page: Int? = nil, response: @escaping ([Collections]?) -> Void) {
+    func getCollections(withNext page: Int? = nil, response: @escaping (Result<[Collections]>) -> Void) {
         var params = Constants.perPageParameter
         if let page = page {
             params = [Constants.page : "\(page)"]
         }
         networking.request(path: Constants.collections, params: params) { (data, error) in
-            if let error = error {
-                print("error received requesting data: \(error.localizedDescription)")
-                response(nil)
+            guard let data = data, let decoded = self.decodeJson(type: [Collections].self, fromData: data) else {
+                response(.error)
+                return
             }
-            let decoded = self.decodeJson(type: [Collections].self, fromData: data)
-            response(decoded)
+            response(.data(decoded))
         }
     }
     
-    func getCollectionPhotos(withNext page: Int? = nil, collectonId: String, response: @escaping ([PhotoDetail]?) -> Void) {
+    func getPhotoOfTheDay(response: @escaping (Result<Collections>) -> Void) {
+        let path = Constants.collections + Constants.PhotoOfTheDayCollectionId
+        networking.request(path: path, params: [:]) { (data, error) in
+            guard let data = data, let decoded = self.decodeJson(type: Collections.self, fromData: data) else {
+                response(.error)
+                return
+            }
+            response(.data(decoded))
+        }
+    }
+    
+    func getCollectionPhotos(withNext page: Int? = nil, collectonId: String, response: @escaping (Result<[PhotoDetail]>) -> Void) {
         var params = Constants.perPageParameter
         if let page = page {
             params = [Constants.page : "\(page)"]
         }
         let path = Constants.collections + "/\(collectonId)" + Constants.photos
         networking.request(path: path, params: params) { (data, error) in
-            if let error = error {
-                print("error received requesting data: \(error.localizedDescription)")
-                response(nil)
+            guard let data = data, let decoded = self.decodeJson(type: [PhotoDetail].self, fromData: data) else {
+                response(.error)
+                return
             }
-            let decoded = self.decodeJson(type: [PhotoDetail].self, fromData: data)
-            response(decoded)
+            response(.data(decoded))
         }
     }
     
-    func getPhotoDetail(id: String, response: @escaping (PhotoDetail?) -> Void) {
+    func getPhotoDetail(id: String, response: @escaping (Result<PhotoDetail>) -> Void) {
         networking.request(path: Constants.photos + id, params: [
             :]) { (data, error) in
-            if let error = error {
-                print("error received requesting data: \(error.localizedDescription)")
-                response(nil)
-            }
-            let decoded = self.decodeJson(type: PhotoDetail.self, fromData: data)
-            response(decoded)
+                guard let data = data, let decoded = self.decodeJson(type: PhotoDetail.self, fromData: data) else {
+                    response(.error)
+                    return
+                }
+                response(.data(decoded))
         }
     }
     

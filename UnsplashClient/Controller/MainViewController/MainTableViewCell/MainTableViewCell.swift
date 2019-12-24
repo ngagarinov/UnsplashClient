@@ -11,10 +11,10 @@ import UIKit
 final class MainTableViewCell: UITableViewCell {
     
     // MARK: - Constants
-       
-       private enum Constants {
-           static let cornerRadius: CGFloat = 16
-       }
+    
+    private enum Constants {
+        static let cornerRadius: CGFloat = 16
+    }
     
     // MARK: - Properties
     
@@ -30,7 +30,7 @@ final class MainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         roundView.layer.masksToBounds = true
-        roundView.layer.cornerRadius = 16
+        roundView.layer.cornerRadius = Constants.cornerRadius
     }
     
     // MARK: - Internal Helpers
@@ -42,7 +42,7 @@ final class MainTableViewCell: UITableViewCell {
         } else {
             descriptionLabel.isHidden = true
         }
-        coverImage.loadImage(with: model.coverPhoto.urls.regular, placeholder: nil)
+        coverImage.loadImage(with: model.coverPhoto.urls.regular, placeholder: UIImage(named: "placeholder"))
     }
     
 }
