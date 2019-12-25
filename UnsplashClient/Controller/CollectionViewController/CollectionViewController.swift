@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 class CollectionViewController: UIViewController {
     
@@ -15,11 +16,13 @@ class CollectionViewController: UIViewController {
     private enum Constants {
         static let cellIdentificator = "CollectionTableViewCell"
         static let estimatedHeight: CGFloat = 138
+        static let errorNotificationSeconds: TimeInterval = 5
     }
     
     // MARK: - Properties
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var reloadButton: UIButton!
     
     private var dataFetcher = NetworkDataFetcher()
     private var page = 1
@@ -28,16 +31,23 @@ class CollectionViewController: UIViewController {
     lazy private var spinner : SYActivityIndicatorView = {
         return SYActivityIndicatorView(image: nil)
     }()
+    lazy private var errorMessageView: MessageView = {
+        return MessageView().configureErrorView()
+    }()
     var totalPhotos = 0
     
     // MARK: - ViewController Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTableViewAppearance()
-        tableView.dataSource = self
-        tableView.delegate = self
-        self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: CollectionTableViewCell.cellId)
+        setTableView()
+        setBlurEffect()
+  
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     // MARK: - Internal Helpers
@@ -52,9 +62,11 @@ class CollectionViewController: UIViewController {
                 self.spinner.stopAnimating()
                 self.tableView.isHidden = false
             case .error:
-                print("error")
+                self.showErrorNotification()
+                self.spinner.stopAnimating()
+                self.reloadButton.isHidden = false
+                
             }
-            
         }
     }
 }
@@ -63,16 +75,48 @@ class CollectionViewController: UIViewController {
 
 private extension CollectionViewController {
     
-    func setTableViewAppearance() {
+    @objc func reloadRequest() {
+        if let id = Int(collectionId) {
+            makeRequest(with: id)
+        }
+    }
+    
+    func setBlurEffect() {
+        guard let navigationBar = navigationController?.navigationBar else { return }
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
+        var bounds = navigationBar.bounds
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        bounds.size.height += statusBarHeight
+        bounds.origin.y -= statusBarHeight
+        visualEffectView.isUserInteractionEnabled = false
+        visualEffectView.frame = bounds
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        navigationBar.addSubview(visualEffectView)
+        visualEffectView.layer.zPosition = -1
+    }
+    
+    func setTableView() {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = Constants.estimatedHeight
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.isHidden = true
+        self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: CollectionTableViewCell.cellId)
         
         spinner.center = view.center
         view.addSubview(spinner)
-        tableView.isHidden = true
         spinner.startAnimating()
+        reloadButton.isHidden = true
+        reloadButton.addTarget(self, action: #selector(reloadRequest), for: .touchUpInside)
+    }
+    
+    func showErrorNotification()  {
+        errorMessageView.isHidden = false
+        var config = SwiftMessages.Config()
+        config.duration = .seconds(seconds: Constants.errorNotificationSeconds)
+        SwiftMessages.show(config: config, view: errorMessageView)
     }
 }
 
@@ -107,6 +151,7 @@ extension CollectionViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let photoDetailVC: PhotoDetailViewController = PhotoDetailViewController.loadFromStoryboard()
         photoDetailVC.configure(with: photosCollection[indexPath.row])
+        photoDetailVC.title = photosCollection[indexPath.row].user?.name
         self.navigationController?.pushViewController(photoDetailVC, animated: true)
     }
     

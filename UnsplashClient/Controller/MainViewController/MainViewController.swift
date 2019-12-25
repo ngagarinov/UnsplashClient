@@ -8,6 +8,7 @@
 
 import UIKit
 import UnsplashPhotoPicker
+import SwiftMessages
 
 final class MainViewController: UIViewController {
     
@@ -16,6 +17,9 @@ final class MainViewController: UIViewController {
     private enum Constants {
         static let cellIdentificator = "MainTableViewCell"
         static let estimatedHeight: CGFloat = 267
+        static let errorNotificationSeconds: TimeInterval = 5
+        static let search = "search"
+        static let unsplash = "Unsplash"
     }
     
     // MARK: - Propeties
@@ -23,9 +27,13 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var photoOfTheDay: UIImageView!
     @IBOutlet weak var PhotoOfTheDayUsernameLabel: UILabel!
+    @IBOutlet weak var reloadButton: UIButton!
     
     lazy private var spinner : SYActivityIndicatorView = {
         return SYActivityIndicatorView(image: nil)
+    }()
+    lazy private var errorMessageView: MessageView = {
+        return MessageView().configureErrorView()
     }()
     
     private var dataFetcher = NetworkDataFetcher()
@@ -37,19 +45,15 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSpinner()
-        setBlurEffect()
+        setNavigationBar()
         setTableView()
-        networkRequests()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: #selector(goToSearch))
-        
+        collectionsRequest()
+        photoOfTheDayRequest()
     }
     
-    // MARK: - Private Helpers
-    
-    @objc func goToSearch() {
-        let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
-        navigationController?.pushViewController(searchVC, animated: true)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
 }
@@ -58,14 +62,33 @@ final class MainViewController: UIViewController {
 
 private extension MainViewController {
     
+    @objc func goToSearch() {
+        let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
+        navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
+    @objc func reloadRequest() {
+        collectionsRequest()
+        photoOfTheDayRequest()
+    }
+    
     func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isHidden = true
         self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: MainTableViewCell.cellId)
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = Constants.estimatedHeight
         tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    func setNavigationBar() {
+        setBlurEffect()
+        var logo = UIImage(named: Constants.search)
+        logo = logo?.withRenderingMode(.alwaysOriginal)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: logo, style:.plain, target: self, action: #selector(goToSearch))
+        title = Constants.unsplash
     }
     
     func setBlurEffect() {
@@ -89,11 +112,19 @@ private extension MainViewController {
         spinner.center = view.center
         view.addSubview(spinner)
         spinner.startAnimating()
-        tableView.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: false)
+        reloadButton.isHidden = true
+        reloadButton.addTarget(self, action: #selector(reloadRequest), for: .touchUpInside)
     }
     
-    func networkRequests() {
+    func showErrorNotification()  {
+        errorMessageView.isHidden = false
+        var config = SwiftMessages.Config()
+        config.duration = .seconds(seconds: Constants.errorNotificationSeconds)
+        SwiftMessages.show(config: config, view: errorMessageView)
+    }
+    
+    func collectionsRequest() {
         dataFetcher.getCollections { result in
             switch result {
             case .data(let collections):
@@ -102,11 +133,15 @@ private extension MainViewController {
                 self.spinner.stopAnimating()
                 self.tableView.isHidden = false
                 self.navigationController?.setNavigationBarHidden(false, animated: false)
+                self.reloadButton.isHidden = true
             case .error:
-                print("error")
+                self.showErrorNotification()
+                self.spinner.stopAnimating()
+                self.reloadButton.isHidden = false
             }
-            
         }
+    }
+    func photoOfTheDayRequest() {
         dataFetcher.getPhotoOfTheDay { result in
             switch result {
             case .data(let photo):
@@ -155,8 +190,12 @@ extension MainViewController: UITableViewDelegate {
                 case .data(let collection):
                     self.collections.append(contentsOf: collection )
                     self.tableView.reloadData()
+                    self.reloadButton.isHidden = true
                 case .error:
-                    print("error")
+                    self.tableView.isHidden = true
+                    self.showErrorNotification()
+                    self.spinner.stopAnimating()
+                    self.reloadButton.isHidden = false
                 }
             }
         }
@@ -167,6 +206,7 @@ extension MainViewController: UITableViewDelegate {
         let collectionViewController: CollectionViewController = CollectionViewController.loadFromStoryboard()
         collectionViewController.makeRequest(with: collections[indexPath.row].id)
         collectionViewController.totalPhotos = collections[indexPath.row].totalPhotos
+        collectionViewController.title = collections[indexPath.row].title
         
         self.navigationController?.pushViewController(collectionViewController, animated: true)
     }

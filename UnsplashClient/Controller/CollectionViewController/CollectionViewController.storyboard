@@ -16,27 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hce-Np-k75">
+                                <rect key="frame" x="153" y="438" width="108" height="30"/>
+                                <state key="normal" title="Перезагрузить">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ZB-n8-UDD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Hce-Np-k75" firstAttribute="centerY" secondItem="GgF-dj-8Vw" secondAttribute="centerY" id="BPs-8e-29E"/>
                             <constraint firstItem="GgF-dj-8Vw" firstAttribute="trailing" secondItem="4ZB-n8-UDD" secondAttribute="trailing" id="FIB-5T-Hnd"/>
                             <constraint firstItem="GgF-dj-8Vw" firstAttribute="bottom" secondItem="4ZB-n8-UDD" secondAttribute="bottom" id="PG3-rV-1jy"/>
+                            <constraint firstItem="Hce-Np-k75" firstAttribute="centerX" secondItem="GgF-dj-8Vw" secondAttribute="centerX" id="arC-ta-drP"/>
                             <constraint firstItem="4ZB-n8-UDD" firstAttribute="leading" secondItem="GgF-dj-8Vw" secondAttribute="leading" id="kQx-Qr-GYO"/>
-                            <constraint firstItem="4ZB-n8-UDD" firstAttribute="top" secondItem="GgF-dj-8Vw" secondAttribute="top" id="yG5-Eg-7at"/>
+                            <constraint firstItem="4ZB-n8-UDD" firstAttribute="top" secondItem="9Gf-0T-EjG" secondAttribute="top" id="yG5-Eg-7at"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GgF-dj-8Vw"/>
                     </view>
                     <connections>
+                        <outlet property="reloadButton" destination="Hce-Np-k75" id="4bg-kw-k2F"/>
                         <outlet property="tableView" destination="4ZB-n8-UDD" id="eA7-8C-kUE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8c-NE-31P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="95"/>
+            <point key="canvasLocation" x="79.710144927536234" y="94.419642857142847"/>
         </scene>
     </scenes>
 </document>

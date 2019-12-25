@@ -16,6 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWi-yM-e6n">
+                                <rect key="frame" x="153" y="438" width="108" height="30"/>
+                                <state key="normal" title="Перезагрузить">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XpC-FK-BGr">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -57,8 +63,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XpC-FK-BGr" secondAttribute="bottom" id="2HO-7c-po9"/>
+                            <constraint firstItem="PWi-yM-e6n" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="795-wW-KDA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XpC-FK-BGr" secondAttribute="trailing" id="P0p-EG-tYI"/>
                             <constraint firstItem="XpC-FK-BGr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Qit-1V-sT0"/>
+                            <constraint firstItem="PWi-yM-e6n" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UBe-fC-VGH"/>
                             <constraint firstItem="XpC-FK-BGr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kUc-BV-2P0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -66,6 +74,7 @@
                     <connections>
                         <outlet property="PhotoOfTheDayUsernameLabel" destination="buc-jG-8AN" id="xxG-8x-ewg"/>
                         <outlet property="photoOfTheDay" destination="VYx-7l-egT" id="fVb-Ay-4wD"/>
+                        <outlet property="reloadButton" destination="PWi-yM-e6n" id="f9A-DG-6L4"/>
                         <outlet property="tableView" destination="XpC-FK-BGr" id="5Xp-V8-GQc"/>
                     </connections>
                 </viewController>

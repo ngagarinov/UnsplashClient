@@ -33,7 +33,13 @@ class PhotoDetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: PhotoDetialTableViewCell.cellId)
+//         self.navigationController?.navigationBar.topItem?.title = ""
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//    }
     
     // MARK: - Internal Properties
     
