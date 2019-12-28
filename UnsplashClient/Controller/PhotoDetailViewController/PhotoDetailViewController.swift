@@ -8,14 +8,14 @@
 
 import UIKit
 
-class PhotoDetailViewController: UIViewController {
+final class PhotoDetailViewController: UIViewController {
     
     // MARK: - Constants
-       
-       private enum Constants {
-           static let cellIdentificator = "PhotoDetialTableViewCell"
-           static let estimatedHeight: CGFloat = 375
-       }
+    
+    private enum Constants {
+        static let cellIdentificator = "PhotoDetialTableViewCell"
+        static let estimatedHeight: CGFloat = 375
+    }
     
     // MARK: - Properties
     
@@ -28,18 +28,8 @@ class PhotoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTableViewAppearance()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: PhotoDetialTableViewCell.cellId)
-//         self.navigationController?.navigationBar.topItem?.title = ""
+        setTableView()
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//    }
     
     // MARK: - Internal Properties
     
@@ -53,11 +43,14 @@ class PhotoDetailViewController: UIViewController {
 
 private extension PhotoDetailViewController {
     
-    func setTableViewAppearance() {
+    func setTableView() {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = Constants.estimatedHeight
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: PhotoDetialTableViewCell.cellId)
     }
 }
 

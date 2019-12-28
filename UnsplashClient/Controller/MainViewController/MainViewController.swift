@@ -55,7 +55,6 @@ final class MainViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
-
 }
 
 // MARK: - Private MainViewController Extension
@@ -76,7 +75,7 @@ private extension MainViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = true
-        self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: MainTableViewCell.cellId)
+        tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: MainTableViewCell.cellId)
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = Constants.estimatedHeight
@@ -87,7 +86,7 @@ private extension MainViewController {
         setBlurEffect()
         var logo = UIImage(named: Constants.search)
         logo = logo?.withRenderingMode(.alwaysOriginal)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: logo, style:.plain, target: self, action: #selector(goToSearch))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: logo, style:.plain, target: self, action: #selector(goToSearch))
         title = Constants.unsplash
     }
     
@@ -141,6 +140,7 @@ private extension MainViewController {
             }
         }
     }
+    
     func photoOfTheDayRequest() {
         dataFetcher.getPhotoOfTheDay { result in
             switch result {
@@ -208,8 +208,7 @@ extension MainViewController: UITableViewDelegate {
         collectionViewController.totalPhotos = collections[indexPath.row].totalPhotos
         collectionViewController.title = collections[indexPath.row].title
         
-        self.navigationController?.pushViewController(collectionViewController, animated: true)
+        navigationController?.pushViewController(collectionViewController, animated: true)
     }
-    
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 import SwiftMessages
 
-class CollectionViewController: UIViewController {
+final class CollectionViewController: UIViewController {
     
     // MARK: - Constants
     
@@ -42,6 +42,7 @@ class CollectionViewController: UIViewController {
         super.viewDidLoad()
         setTableView()
         setBlurEffect()
+        setSpinner()
   
     }
     
@@ -104,7 +105,9 @@ private extension CollectionViewController {
         tableView.delegate = self
         tableView.isHidden = true
         self.tableView.register(UINib(nibName: Constants.cellIdentificator, bundle: nil), forCellReuseIdentifier: CollectionTableViewCell.cellId)
-        
+    }
+    
+    func setSpinner() {
         spinner.center = view.center
         view.addSubview(spinner)
         spinner.startAnimating()
@@ -167,7 +170,10 @@ extension CollectionViewController: UITableViewDelegate {
                         self.photosCollection.append(contentsOf: collection)
                         self.tableView.reloadData()
                     case .error:
-                        print("error")
+                        self.tableView.isHidden = true
+                        self.showErrorNotification()
+                        self.spinner.stopAnimating()
+                        self.reloadButton.isHidden = false
                     }
                 }
             }

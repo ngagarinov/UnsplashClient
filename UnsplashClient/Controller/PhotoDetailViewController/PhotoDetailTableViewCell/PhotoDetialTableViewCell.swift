@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoDetialTableViewCell: UITableViewCell {
+final class PhotoDetialTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
@@ -17,17 +17,8 @@ class PhotoDetialTableViewCell: UITableViewCell {
     @IBOutlet weak var resolutionLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var urlTextView: UITextView!
-    
-    
     @IBOutlet weak var photoImageView: UIImageView!
     
-    // MARK: - Cell Lifecycle
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-
     // MARK: - Internal Helpers
     
     func configure( with model: PhotoDetail? ) {
@@ -42,6 +33,4 @@ class PhotoDetialTableViewCell: UITableViewCell {
             urlTextView.text = viewModel.urls.full
         }
     }
-    
-    
 }

@@ -19,14 +19,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWD-WQ-uJD">
                                 <rect key="frame" x="0.0" y="751" width="414" height="145"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search query" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsh-GG-MLn">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Найти" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qsh-GG-MLn">
                                         <rect key="frame" x="16" y="8" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rus-yr-0cv">
                                         <rect key="frame" x="16" y="91" width="382" height="30"/>
-                                        <state key="normal" title="Search"/>
+                                        <state key="normal" title="Поиск"/>
                                         <connections>
                                             <action selector="searchButtonAction:" destination="lGE-pr-nsX" eventType="touchUpInside" id="Fsf-6P-X7n"/>
                                         </connections>

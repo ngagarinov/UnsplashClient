@@ -9,20 +9,14 @@
 import UIKit
 import UnsplashPhotoPicker
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
 
     // MARK: - Properties
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
-    
-    private var photos = [UnsplashPhoto]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+    private var photos = [UnsplashPhoto]()
     
     // MARK: - IBAction
     
@@ -33,13 +27,11 @@ class SearchViewController: UIViewController {
             secretKey: SecretConstants.secretKey,
             query: searchTextField.text
         )
-        
         let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
         unsplashPhotoPicker.photoPickerDelegate = self
 
         present(unsplashPhotoPicker, animated: true, completion: nil)
     }
-    
 }
 
 // MARK: - UnsplashPhotoPickerDelegate
@@ -53,7 +45,7 @@ extension SearchViewController: UnsplashPhotoPickerDelegate {
     }
 
     func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
-        print("Unsplash photo picker did cancel")
+        
     }
 }
 

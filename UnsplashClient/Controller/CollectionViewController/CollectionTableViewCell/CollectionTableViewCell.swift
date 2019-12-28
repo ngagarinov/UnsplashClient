@@ -9,7 +9,7 @@
 import UIKit
 import Nuke
 
-class CollectionTableViewCell: UITableViewCell {
+final class CollectionTableViewCell: UITableViewCell {
     
     // MARK: - Constants
     
@@ -23,15 +23,6 @@ class CollectionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
-    
-    // MARK: - Cell Lifecycle
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-//        photoImageView.layer.cornerRadius = Constants.cornerRadius
-//        photoImageView.clipsToBounds = true
-    }
     
     // MARK: - Internal Helpers
     
