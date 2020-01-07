@@ -48,7 +48,6 @@ final class NetworkService: Networking {
     private func url(from path: String, params: [String: String]) -> URL? {
         
         var components = URLComponents()
-        
         components.scheme = Constants.scheme
         components.host = Constants.host
         components.path = path
@@ -56,5 +55,4 @@ final class NetworkService: Networking {
 
         return components.url
     }
-    
 }

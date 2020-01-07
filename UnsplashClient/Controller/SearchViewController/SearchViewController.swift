@@ -17,6 +17,37 @@ final class SearchViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
 
     private var photos = [UnsplashPhoto]()
+    private var textFieldRealYPosition: CGFloat = 0.0
+    
+    // MARK: - ViewController Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // MARK: - Objc funcs
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+       guard let userInfo = notification.userInfo else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+        let keyboardFrame = keyboardSize.cgRectValue
+        if self.view.frame.origin.y == 0 {                       self.view.frame.origin.y -= keyboardFrame.height
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        if self.view.frame.origin.y != 0 {                       self.view.frame.origin.y = 0
+        }
+    }
     
     // MARK: - IBAction
     
@@ -32,6 +63,7 @@ final class SearchViewController: UIViewController {
 
         present(unsplashPhotoPicker, animated: true, completion: nil)
     }
+
 }
 
 // MARK: - UnsplashPhotoPickerDelegate
